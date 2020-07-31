@@ -164,12 +164,19 @@ namespace wc_Blog.Controllers
                 };
                 if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {
-                    var fileName = Path.GetFileName(image.FileName);
-                    var justFileName = Path.GetFileNameWithoutExtension(fileName);
-                    justFileName = StringUtilities.URLFriendly(justFileName);
-                    fileName = $"{justFileName}_{DateTime.Now.Ticks}{Path.GetExtension(fileName)}";
-                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/Avatars"), fileName));
-                    user.AvatarUrl = "/Uploads/Avatars/" + fileName;
+                    
+                   
+                        var fileName = Path.GetFileName(image.FileName);
+                        var justFileName = Path.GetFileNameWithoutExtension(fileName);
+                        justFileName = StringUtilities.URLFriendly(justFileName);
+                        fileName = $"{justFileName}_{DateTime.Now.Ticks}{Path.GetExtension(fileName)}";
+                        image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/Avatars"), fileName));
+                        user.AvatarUrl = "/Uploads/Avatars/" + fileName;
+                 
+                }
+                else
+                {
+                    user.AvatarUrl = "/images/DefaultAvatar.png";
                 }
 
                 var result = await UserManager.CreateAsync(user, model.Password);

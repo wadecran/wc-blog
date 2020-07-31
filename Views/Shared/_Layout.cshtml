@@ -1,10 +1,12 @@
-﻿<!doctype html>
+﻿@using wc_Blog.Utilities
+<!doctype html>
 <html lang="en">
 <head>
+
 	<link rel="icon"
 		  type="image/png"
 		  href="images/favicon.ico">
-	<title>Colorlib Balita &mdash; Minimal Blog Template</title>
+	<title>Wadin' Through It</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -42,7 +44,7 @@
 						{
 							<i class="icon fa fa-search"></i>
 							<input id="s" name="searchStr" class="input-block-level form-control" type="text" placeholder="Type a keyword and hit enter" />
-						}		
+						}
 
 					</div>
 
@@ -54,7 +56,7 @@
 			<div class="row pt-5">
 				<div class="col-12 text-center">
 					<a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button" aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
-					<h1 class="site-logo"><a href="index.html">Balita</a></h1>
+					<h1 class="site-logo"><a href="index.html">Wading Through It</a></h1>
 				</div>
 			</div>
 		</div>
@@ -66,13 +68,13 @@
 				<div class="collapse navbar-collapse" id="navbarMenu">
 					<ul class="navbar-nav mx-auto">
 						<li class="nav-item">
-							<a class="nav-link active" href="/Home/Index">Home</a>
+							<a class="nav-link @Html.IsActive("Home", "Index")" href=@Url.Action("Index","Home")>Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/Home/About">About</a>
+							<a class="nav-link @Html.IsActive("Home", "About")" href=@Url.Action("About","Home")>About</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/Home/Contact">Contact</a>
+							<a class="nav-link @Html.IsActive("Home", "Contact")" href=@Url.Action("Index","Home")>Contact</a>
 						</li>
 						@Html.Partial("_LoginPartial")
 					</ul>
@@ -117,9 +119,9 @@
 							<div class="mb-5">
 								<h3>Quick Links</h3>
 								<ul class="list-unstyled">
-									<li><a href="/Home/Index">Home</a></li>
-									<li><a href="/Home/About">About</a></li>
-									<li><a href="/Home/Contact">Contact</a></li>
+									<li><a href="/Home/Index" @Html.IsActive("Home", "Index")>Home</a></li>
+									<li><a href="/Home/About" @Html.IsActive("About", "Index")>About</a></li>
+									<li><a href="/Home/Contact" @Html.IsActive("Contact", "Index")>Contact</a></li>
 								</ul>
 							</div>
 
