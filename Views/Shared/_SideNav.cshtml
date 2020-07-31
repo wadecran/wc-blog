@@ -1,0 +1,47 @@
+﻿
+<div class="col-md-12 col-lg-4 sidebar">
+	<div class="sidebar-box search-form-wrap">
+
+		@using (Html.BeginForm("Index", "BlogPosts", FormMethod.Get, new { @class = "form-group search-form" }))
+		{
+			<div class="form-group">
+				<i class="icon fa fa-search"></i>
+				<input id="s" name="searchStr" class="input-block-level form-control" type="text" placeholder="Type a keyword and hit enter" />
+			</div>
+
+		}
+	</div>
+	<!-- END sidebar-box -->
+	<div class="sidebar-box">
+		<div class="bio text-center">
+			<img src="/images/person_1.jpg" alt="Image Placeholder" class="img-fluid">
+			<div class="bio-body">
+				<h2>Wade Cranford</h2>
+				<p>I'm a Full-Stack .NET Developer and I love to explore new technologies. I've been dedicated to studying code for almost two years, but have been exposed to programming since I was young.</p>
+				<p><a href="/Home/About" class="btn btn-primary btn-sm">Read my bio</a></p>
+				<p class="social">
+					
+					<a href="https://www.linkedin.com/in/wade-cranford-3056b31b2/" class ="p-2"><span class="fa fa-linkedin"></span></a>
+					<a href="https://github.com/wadecran" class ="p-2"><span class="fa fa-github"></span></a>
+					<a href="https://wc-portfolio.netlify.app/" class ="p-2"><img class="personal-icon"src="~/images/favicon-16x16.png" /></a>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- END sidebar-box -->
+
+	<div class="sidebar-box">
+		<h3 class="heading">Categories</h3>
+		<ul class="categories">
+			<li><a href="#">Courses <span>(12)</span></a></li>
+			<li><a href="#">News <span>(22)</span></a></li>
+			<li><a href="#">Design <span>(37)</span></a></li>
+			<li><a href="#">HTML <span>(42)</span></a></li>
+			<li><a href="#">Web Development <span>(14)</span></a></li>
+		</ul>
+	</div>
+	<!-- END sidebar-box -->
+
+</div>
+<!-- END sidebar -->

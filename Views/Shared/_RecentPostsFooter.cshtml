@@ -1,0 +1,36 @@
+﻿@using wc_Blog.Models
+@model IEnumerable<BlogPost>
+
+@foreach (var post in Model)
+{
+	if (post.MediaURL != null)
+	{
+	<li>
+		<a href="@Url.Action("Details", "BlogPosts", new { slug = post.Slug })">
+			<img src="@post.MediaURL" alt="Image placeholder" class="mr-4">
+			<div class="text">
+				<h4>@post.Title</h4>
+				<div class="post-meta">
+					<span class="mr-2">@post.Created.ToString("MMM dd yyyy") </span> &bullet;
+					<span class="ml-2"><span class="fa fa-comments"></span> @post.Comments.Count </span>
+				</div>
+			</div>
+		</a>
+	</li>
+	}
+	else
+	{
+	<li>
+		<a href="@Url.Action("Details", "BlogPosts", new { slug = post.Slug })">
+			<img src="~/images/img_8.jpg" alt="Image placeholder" class="mr-4">
+			<div class="text">
+				<h4>@post.Title</h4>
+				<div class="post-meta">
+					<span class="mr-2">@post.Created.ToString("MMM dd yyyy") </span> &bullet;
+					<span class="ml-2"><span class="fa fa-comments"></span> @post.Comments.Count </span>
+				</div>
+			</div>
+		</a>
+	</li>
+	}
+}
