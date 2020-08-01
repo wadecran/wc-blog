@@ -17,6 +17,7 @@ namespace wc_Blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Comments
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Index()
         {
             var comments = db.Comments.Include(c => c.Author).Include(c => c.BlogPost);
@@ -54,7 +55,7 @@ namespace wc_Blog.Controllers
                 CommentBody = commentBody,
                 Created = DateTime.Now,
                 BlogPostId = blogPostId,
-                AuthorId = User.Identity.GetUserId(),
+                AuthorId = User.Identity.GetUserId()
 
             };
 
@@ -122,7 +123,8 @@ namespace wc_Blog.Controllers
             Comment comment = db.Comments.Find(id);
             db.Comments.Remove(comment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "BlogPosts", new  { slug = db.BlogPosts.Find(comment.BlogPostId).Slug});
+             
         }
 
         protected override void Dispose(bool disposing)

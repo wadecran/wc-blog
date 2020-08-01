@@ -54,7 +54,7 @@ namespace wc_Blog.Controllers
                     var svc = new EmailService();
                     await svc.SendAsync(email);
 
-                    return View("Index");
+                    return RedirectToAction("Index");
                 }
                 catch(Exception ex)
                 {
@@ -62,7 +62,7 @@ namespace wc_Blog.Controllers
                     await Task.FromResult(0);
                 }
             }
-            return View(model);
+            return View();
         }
 
         

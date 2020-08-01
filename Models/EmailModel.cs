@@ -14,7 +14,6 @@ namespace wc_Blog.Models
         public string FromEmail { get; set; }
         [Required]
         public string Subject { get; set; }
-        [AllowHTML]
         [Required]
         public string Body { get; set; }
     }

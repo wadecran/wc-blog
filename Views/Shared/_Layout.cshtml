@@ -5,7 +5,7 @@
 
 	<link rel="icon"
 		  type="image/png"
-		  href="images/favicon.ico">
+		  href="~/images/favicon.ico">
 	<title>Wadin' Through It</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -74,7 +74,7 @@
 							<a class="nav-link @Html.IsActive("Home", "About")" href=@Url.Action("About","Home")>About</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link @Html.IsActive("Home", "Contact")" href=@Url.Action("Index","Home")>Contact</a>
+							<a class="nav-link @Html.IsActive("Home", "Contact")" href=@Url.Action("Contact","Home")>Contact</a>
 						</li>
 						@Html.Partial("_LoginPartial")
 					</ul>

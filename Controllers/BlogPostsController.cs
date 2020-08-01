@@ -55,13 +55,13 @@ namespace wc_Blog.Controllers
         }
 
         // GET: BlogPosts/Details/5
-        public ActionResult Details(string Slug)
+        public ActionResult Details(string slug)
         {
-            if (String.IsNullOrWhiteSpace(Slug))
+            if (String.IsNullOrWhiteSpace(slug))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == Slug);
+            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == slug);
             if (blogPost == null)
             {
                 return HttpNotFound();

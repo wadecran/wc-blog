@@ -95,39 +95,35 @@
 		</div>
 		<div class="row blog-entries">
 			<div class="col-md-12 col-lg-8 main-content">
-				
-					@Html.Action("_BtnBlogNav", "BlogPosts");
 
-					
+				@Html.Action("_BtnBlogNav", "BlogPosts");
+
+
 
 
 				@*<div class="row mb-5 mt-5">
-
-			<div class="col-md-12">
-				<h2 class="mb-4">Earlier Posts</h2>
-			</div>
-
-			<div class="col-md-12">
-
-				@foreach (var post in Model.Take(5))
-				{
-					<div class="post-entry-horzontal">
-						<a href=@Url.Action("Details", "BlogPosts", new { slug = post.Slug })>
-							<div class="image element-animate" data-animate-effect="fadeIn" style="background-image: url(/images/img_10.jpg);"></div>
-							<span class="text">
-								<div class="post-meta">
-									<span class="mr-2">@post.Created.ToString("MMM dd yyyy") </span> &bullet;
-									<span class="ml-2"><span class="fa fa-comments"></span> @post.Comments.Count</span>
+						<div class="col-md-12">
+							<h2 class="mb-4">Earlier Posts</h2>
+						</div>
+						<div class="col-md-12">
+							@foreach (var post in Model.Take(5))
+							{
+								<div class="post-entry-horzontal">
+									<a href=@Url.Action("Details", "BlogPosts", new { slug = post.Slug })>
+										<div class="image element-animate" data-animate-effect="fadeIn" style="background-image: url(/images/img_10.jpg);"></div>
+										<span class="text">
+											<div class="post-meta">
+												<span class="mr-2">@post.Created.ToString("MMM dd yyyy") </span> &bullet;
+												<span class="ml-2"><span class="fa fa-comments"></span> @post.Comments.Count</span>
+											</div>
+											<h2>@post.Title</h2>
+										</span>
+									</a>
 								</div>
-								<h2>@post.Title</h2>
-							</span>
-						</a>
-					</div>
-					 END post
-				}
-
-			</div>
-		</div>*@
+								 END post
+							}
+						</div>
+					</div>*@
 
 
 
@@ -138,4 +134,3 @@
 		</div>
 	</div>
 </section>
-
