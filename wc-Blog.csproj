@@ -214,6 +214,7 @@
     <Content Include="images\DefaultAvatar.png" />
     <Content Include="images\favicon-16x16.png" />
     <Content Include="images\favicon.ico" />
+    <Content Include="images\wade-banner.jpg" />
     <Content Include="images\wade-pool-c.jpg" />
     <Content Include="Private.config" />
     <Content Include="Scripts\bootstrap.min.js" />
