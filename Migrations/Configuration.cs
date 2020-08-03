@@ -87,19 +87,19 @@ namespace wc_Blog.Migrations
                 userManager.AddToRoles(userId, "Moderator");
             }
 
-            for (var loop = 1; loop <= 30; loop++) {
-                context.BlogPosts.AddOrUpdate(
-                    b => b.Title,
-                    new BlogPost
-                    {
-                        Title = $"Seeded Title {loop}",
-                        Body = $"Seeded Body {loop}",
-                        Abstract = $"Seeded Abstract {loop}",
-                        Slug = StringUtilities.URLFriendly($"Seeded Title {loop}"),
-                        Published = true,
-                        Created = DateTime.Now,
-                    });
-            }
+            //for (var loop = 1; loop <= 30; loop++) {
+            //    context.BlogPosts.AddOrUpdate(
+            //        b => b.Title,
+            //        new BlogPost
+            //        {
+            //            Title = $"Seeded Title {loop}",
+            //            Body = $"Seeded Body {loop}",
+            //            Abstract = $"Seeded Abstract {loop}",
+            //            Slug = StringUtilities.URLFriendly($"Seeded Title {loop}"),
+            //            Published = true,
+            //            Created = DateTime.Now,
+            //        });
+            //}
         }
     }
 }

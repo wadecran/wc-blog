@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls.WebParts;
 
 namespace wc_Blog.Utilities
 {
@@ -22,6 +23,21 @@ namespace wc_Blog.Utilities
                                action == routeAction;
 
             return returnActive ? "active" : "";
+        }
+        public static string PosChange(this HtmlHelper html,
+                                  string control,
+                                  string action)
+        {
+            var routeData = html.ViewContext.RouteData;
+
+            var routeAction = (string)routeData.Values["action"];
+            var routeControl = (string)routeData.Values["controller"];
+
+            // both must match
+            var returnActive = control == routeControl &&
+                               action == routeAction;
+
+            return returnActive ? "margin-top: 60%" : "";
         }
     }
 }

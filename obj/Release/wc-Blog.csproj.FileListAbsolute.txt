@@ -109,3 +109,4 @@ C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\obj\Release\wc-Blog.csproj.Co
 C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\obj\Release\wc-Blog.csproj.CopyComplete
 C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\obj\Release\wc-Blog.dll
 C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\obj\Release\wc-Blog.pdb
+C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\obj\Release\wc-Blog.csprojAssemblyReference.cache

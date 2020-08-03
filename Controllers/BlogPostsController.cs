@@ -210,24 +210,30 @@ namespace wc_Blog.Controllers
             }
             base.Dispose(disposing);
         }
-        public PartialViewResult _BtnBlogNav(int? displayNumber)
+        public ActionResult _BtnBlogNav(int? page)
         {
-            switch (displayNumber)
-            {
-                case 1:
-                    return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).Take(8).ToList());
-
-                case 2:
-                    return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(14).Take(8).ToList());
-
-                case 3:
-                    return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(22).Take(8).ToList());
-
-                default:
-                    return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).Take(8).ToList());
-
-            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1); //?? null coalescing operator
+            return PartialView(db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).ToPagedList(pageNumber, pageSize));
         }
+        //public PartialViewResult _BtnBlogNav(int? displayNumber)
+        //{
+        //    switch (displayNumber)
+        //    {
+        //        case 1:
+        //            return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).Take(8).ToList());
+
+        //        case 2:
+        //            return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(14).Take(8).ToList());
+
+        //        case 3:
+        //            return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(22).Take(8).ToList());
+
+        //        default:
+        //            return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).Take(8).ToList());
+
+        //    }
+        //}
 
         public ActionResult _RecentPostsFooter()
         {
