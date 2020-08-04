@@ -34,36 +34,38 @@ namespace wc_Blog.Helpers
                 return false;
             }
         }
-        public static bool IsAvatarFriendlyImage(HttpPostedFileBase file)
-        {
-            if (file == null)
-            {
-                return false;
-            }
-            if (file.ContentLength > 2 * 1024 * 1024 || file.ContentLength < 1024)
-            {
-                return false;
-            }
-            if (Image.FromStream(file.InputStream).Width == 700 && Image.FromStream(file.InputStream).Height == 700)
-            {
-                try
-                {
-                    using (var img = Image.FromStream(file.InputStream))
-                    {
-                        return ImageFormat.Jpeg.Equals(img.RawFormat) ||
-                            ImageFormat.Png.Equals(img.RawFormat) ||
-                            ImageFormat.Gif.Equals(img.RawFormat);
-                    }
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
+
+        //****************Restrictions on avatar images***********************
+        //public static bool IsAvatarFriendlyImage(HttpPostedFileBase file)
+        //{
+        //    if (file == null)
+        //    {
+        //        return false;
+        //    }
+        //    if (file.ContentLength > 2 * 1024 * 1024 || file.ContentLength < 1024)
+        //    {
+        //        return false;
+        //    }
+        //    if (Image.FromStream(file.InputStream).Width == 700 && Image.FromStream(file.InputStream).Height == 700)
+        //    {
+        //        try
+        //        {
+        //            using (var img = Image.FromStream(file.InputStream))
+        //            {
+        //                return ImageFormat.Jpeg.Equals(img.RawFormat) ||
+        //                    ImageFormat.Png.Equals(img.RawFormat) ||
+        //                    ImageFormat.Gif.Equals(img.RawFormat);
+        //            }
+        //        }
+        //        catch
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

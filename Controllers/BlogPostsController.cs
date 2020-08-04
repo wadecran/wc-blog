@@ -21,6 +21,7 @@ namespace wc_Blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: BlogPosts
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Index(int? page, string searchStr)
         {
             ViewBag.Search = searchStr;
@@ -121,6 +122,7 @@ namespace wc_Blog.Controllers
         }
 
         // GET: BlogPosts/Edit/5
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -165,7 +167,7 @@ namespace wc_Blog.Controllers
                 {
                     var fileName = Path.GetFileName(image.FileName);
                     image.SaveAs(Path.Combine(Server.MapPath("~/Upload/"), fileName));
-                    blogPost.MediaURL = "/Uploads/" + fileName;
+                    blogPost.MediaURL = "~/Uploads/" + fileName;
                 }
 
                 blogPost.Updated = DateTime.Now;
@@ -177,6 +179,7 @@ namespace wc_Blog.Controllers
         }
 
         // GET: BlogBlogPosts/Delete/5
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -210,30 +213,20 @@ namespace wc_Blog.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult _BtnBlogNav(int? page)
+        public ActionResult _BtnBlogNav()
         {
+            return PartialView(db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).Take(6).ToList());
+        }
+        public ActionResult Archive(int? page, string searchStr)
+        {
+            ViewBag.Search = searchStr;
+            var blogList = IndexSearch(searchStr);
+
             int pageSize = 8;
             int pageNumber = (page ?? 1); //?? null coalescing operator
-            return PartialView(db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).ToPagedList(pageNumber, pageSize));
+
+            return View(blogList.Where(b => b.Published).OrderBy(b => b.Created).ToPagedList(pageNumber, pageSize));
         }
-        //public PartialViewResult _BtnBlogNav(int? displayNumber)
-        //{
-        //    switch (displayNumber)
-        //    {
-        //        case 1:
-        //            return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).Take(8).ToList());
-
-        //        case 2:
-        //            return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(14).Take(8).ToList());
-
-        //        case 3:
-        //            return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(22).Take(8).ToList());
-
-        //        default:
-        //            return PartialView( db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).Skip(6).Take(8).ToList());
-
-        //    }
-        //}
 
         public ActionResult _RecentPostsFooter()
         {

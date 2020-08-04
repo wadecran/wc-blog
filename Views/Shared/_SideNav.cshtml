@@ -2,7 +2,7 @@
 <div class="col-md-12 col-lg-4 sidebar">
 	<div class="sidebar-box search-form-wrap">
 
-		@using (Html.BeginForm("Index", "BlogPosts", FormMethod.Get, new { @class = "form-group search-form" }))
+		@using (Html.BeginForm("Archive", "BlogPosts", FormMethod.Get, new { @class = "form-group search-form" }))
 		{
 			<div class="form-group">
 				<i class="icon fa fa-search"></i>
@@ -21,9 +21,9 @@
 				<p><a href="/Home/About" class="btn btn-primary btn-sm">Read my bio</a></p>
 				<p class="social">
 
-					<a href="https://www.linkedin.com/in/wade-cranford-3056b31b2/" class="p-2"><span class="fa fa-linkedin"></span></a>
-					<a href="https://github.com/wadecran" class="p-2"><span class="fa fa-github"></span></a>
-					<a href="https://wc-portfolio.netlify.app/" class="p-2"><img class="personal-icon" src="~/images/favicon-16x16.png" /></a>
+					<a href="https://www.linkedin.com/in/wade-cranford-3056b31b2/" target="_blank" class="p-2"><span class="fa fa-linkedin"></span></a>
+					<a href="https://github.com/wadecran" target="_blank" class="p-2"><span class="fa fa-github"></span></a>
+					<a href="https://wc-portfolio.netlify.app/" target="_blank" class="p-2"><img class="personal-icon" src="~/images/favicon-16x16.png" /></a>
 				</p>
 			</div>
 		</div>

@@ -1,0 +1,54 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using wc_Blog.Models
+@model IPagedList<wc_Blog.Models.BlogPost>
+
+@{
+	ViewBag.Title = "Archive";
+}
+
+<section class="site-section py-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<br />
+				<h2 class="mb-4">Archive</h2>
+			</div>
+		</div>
+		<div class="row blog-entries">
+			<div class="col-md-12 col-lg-8 main-content">
+				<div class="row">
+					@foreach (var post in Model)
+					{
+						<div class="col-md-6">
+							<a href=@Url.Action("Details", "BlogPosts", new { slug = post.Slug }) class="blog-entry element-animate" data-animate-effect="fadeIn">
+								@if (post.MediaURL != null)
+								{
+									<img class="img-responsive" src="@post.MediaURL" alt="" />
+								}
+								else
+								{
+									<img src="/images/img_5.jpg" alt="Image placeholder">
+								}
+								<div class="blog-content-body">
+									<div class="post-meta">
+										<span class="category">@post.Category</span>
+										<span class="mr-2">@post.Created.ToString("MMM dd yyyy") </span> &bullet;
+										<span class="ml-2"><span class="fa fa-comments"></span> @post.Comments.Count</span>
+									</div>
+									<h2>@post.Title</h2>
+								</div>
+							</a>
+						</div>
+					}
+				</div>
+				Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+				@if (Model.PageCount > 1)
+				{
+				@Html.PagedListPager(Model, page => Url.Action("Archive", new { page, searchStr = ViewBag.Search }))
+				}
+			</div>
+			@Html.Partial("_SideNav")
+		</div>
+	</div>
+</section>

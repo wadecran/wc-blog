@@ -110,3 +110,5 @@ C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\bin\PagedList.dll
 C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\bin\PagedList.Mvc.dll
 C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\bin\PagedList.xml
 C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\bin\PagedList.Mvc.xml
+C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\obj\Debug\wc_Blog.Migrations.FirstBlogPost.resources
+C:\Users\Purple Onion\source\repos\wc-Blog\wc-Blog\obj\Debug\wc-Blog.csproj.GenerateResource.cache

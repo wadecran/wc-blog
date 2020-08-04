@@ -73,6 +73,10 @@ namespace wc_Blog.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comment comment = db.Comments.Find(id);
+            if (comment.AuthorId != User.Identity.GetUserId() && !(User.IsInRole("Admin") || User.IsInRole("Moderator")))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (comment == null)
             {
                 return HttpNotFound();
@@ -87,13 +91,15 @@ namespace wc_Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,BlogPostId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
+        public ActionResult Edit([Bind(Include = "Id,BlogPostId,AuthorId,CommentBody,Created,Updated,UpdateReason")] Comment comment, string slug)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(comment).State = EntityState.Modified;
+                comment.Updated = DateTime.Now;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                slug = db.BlogPosts.Find(comment.BlogPostId).Slug;
+                return RedirectToAction("Details", "BlogPosts", new { slug });
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
             ViewBag.BlogPostId = new SelectList(db.BlogPosts, "Id", "Title", comment.BlogPostId);
@@ -103,11 +109,16 @@ namespace wc_Blog.Controllers
         // GET: Comments/Delete/5
         public ActionResult Delete(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comment comment = db.Comments.Find(id);
+            if (comment.AuthorId != User.Identity.GetUserId() && !(User.IsInRole("Admin")  || User.IsInRole("Moderator")) )
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (comment == null)
             {
                 return HttpNotFound();

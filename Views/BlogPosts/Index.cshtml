@@ -80,24 +80,15 @@
 			<td>
 				@Html.DisplayFor(modelItem => blogPost.Published)
 			</td>
-			@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
-			{
 				<td>
 					@Html.ActionLink("Edit", "Edit", new { id = blogPost.Id }) |
 					@Html.ActionLink("Details", "Details", new { slug = blogPost.Slug }) |
 					@Html.ActionLink("Delete", "Delete", new { id = blogPost.Id })
 				</td>
-			}
-			else
-			{
-				<td>
-					@Html.ActionLink("Details", "Details", new { slug = blogPost.Slug })
-				</td>
-			}
 			<td>
 				@if (blogPost.MediaURL != null)
 				{
-					<img class="img-responsive" src="@blogPost.MediaURL" alt="" />
+					@blogPost.MediaURL
 				}
 			</td>
 		</tr>

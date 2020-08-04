@@ -1452,11 +1452,12 @@ textarea.form-control {
   font-size: 20px;
 }
 
-.comment-list li .comment-body .meta {
+.comment-list li .comment-body #date {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: .1em;
   color: #ccc;
+  
 }
 
 .comment-list li .comment-body .reply {

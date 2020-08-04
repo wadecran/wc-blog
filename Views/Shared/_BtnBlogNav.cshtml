@@ -1,7 +1,7 @@
-﻿@using PagedList;
-@using PagedList.Mvc;
+﻿@*@using PagedList;
+@using PagedList.Mvc;*@
 @using wc_Blog.Models
-@model IPagedList<BlogPost>
+@model ICollection<BlogPost>
 @using (Html.BeginForm("_BtnBlogNav", "BlogPosts", FormMethod.Get))
 {
 
@@ -47,4 +47,4 @@
 			</div>
 		</div>*@
 }
-@Html.PagedListPager(Model, page => Url.Action("_BtnBlogNav", new { page }))
+@*@Html.PagedListPager(Model, page => Url.Action("_BtnBlogNav", new { page }))*@
