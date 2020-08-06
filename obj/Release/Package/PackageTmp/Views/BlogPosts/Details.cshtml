@@ -58,17 +58,33 @@
 									</div>
 									<div class="comment-body">
 										<h3>@comment.Author.DisplayName</h3>
-										<div class="meta">@comment.Created.ToString("MMM dd yyyy") at @comment.Created.ToString("h:mm tt")</div>
+										<div id="date">@comment.Created.ToString("MMM dd yyyy") at @comment.Created.ToString("h:mm tt")</div>
 										<p id="`comment-${comment.Id}`">@comment.CommentBody</p>
 										@*Add Reply*@
 										@************************************************************************************************************************@
 										@*<p><a href="#" class="reply">Reply</a></p>*@
 										@************************************************************************************************************************@
-										@if (User.IsInRole("Admin") || User.IsInRole("Moderator") || User.Identity.GetUserId() == comment.AuthorId)
+										@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
 										{
 											<p>@Html.ActionLink("Edit Comment", "Edit", "Comments", new { id = comment.Id }, new { @class = "reply" })</p>
 											<p>@Html.ActionLink("Delete", "Delete", "Comments", new { id = comment.Id }, new { @class = "reply" })</p>
 										}
+										else
+										{
+											if (User.Identity.GetUserId() == comment.AuthorId && String.IsNullOrWhiteSpace(comment.UpdateReason))
+											{
+												<p>@Html.ActionLink("Edit Comment", "Edit", "Comments", new { id = comment.Id }, new { @class = "reply" })</p>
+												<p>@Html.ActionLink("Delete", "Delete", "Comments", new { id = comment.Id }, new { @class = "reply" })</p>
+											}
+											else
+											{
+												if (User.Identity.GetUserId() == comment.AuthorId)
+												{
+													<p>@Html.ActionLink("Delete", "Delete", "Comments", new { id = comment.Id }, new { @class = "reply" })</p>
+												}
+											}
+										}
+
 									</div>
 								</li>
 							}
@@ -84,33 +100,33 @@
 									@Html.Hidden("BlogPostId", Model.Id)
 									@Html.Hidden("Slug", Model.Slug)
 									@Html.Label("Comment")<br />
-									@Html.TextArea("CommentBody", new { cols = 30, rows = 10 })
+									@Html.TextArea("CommentBody", new { cols = 65, rows = 10 })
 									<br />
 									<button type="submit" class="btn btn-primary">Post Comment</button>
 								}
 								@*<form action="#" class="p-5 bg-light">
-								<div class="form-group">
-									<label for="name">Name *</label>
-									<input type="text" class="form-control" id="name">
-								</div>
-								<div class="form-group">
-									<label for="email">Email *</label>
-									<input type="email" class="form-control" id="email">
-								</div>
-								<div class="form-group">
-									<label for="website">Website</label>
-									<input type="url" class="form-control" id="website">
-								</div>
+										<div class="form-group">
+											<label for="name">Name *</label>
+											<input type="text" class="form-control" id="name">
+										</div>
+										<div class="form-group">
+											<label for="email">Email *</label>
+											<input type="email" class="form-control" id="email">
+										</div>
+										<div class="form-group">
+											<label for="website">Website</label>
+											<input type="url" class="form-control" id="website">
+										</div>
 
-								<div class="form-group">
-									<label for="message">Message</label>
-									<textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-								</div>
-								<div class="form-group">
-									<input type="submit" value="Post Comment" class="btn btn-primary">
-								</div>
+										<div class="form-group">
+											<label for="message">Message</label>
+											<textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+										</div>
+										<div class="form-group">
+											<input type="submit" value="Post Comment" class="btn btn-primary">
+										</div>
 
-							</form>*@
+									</form>*@
 							</div>
 						}
 

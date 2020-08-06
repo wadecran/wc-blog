@@ -26,13 +26,12 @@
 	<div class="form-group">
 		@Html.LabelFor(m => m.DisplayName, new { @class = "col-md-2 control-label" })
 		<div class="col-md-10">
-			@Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control" })
+			@Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control", maxlength = 20 })
 		</div>
 	</div>
 	<div class="form-group">
 		@Html.LabelFor(m => m.AvatarUrl, htmlAttributes: new { @class = "control-label col-md-2"})
 		<div class="col-md-10">
-			<p>Must be less than 1MB and 700x700</p>
 			<input name="image" type="file" class="form-control" id="fileUpload" />
 			@Html.ValidationMessageFor(m => m.AvatarUrl, "", new { @class = "text-danger" })
 		</div>

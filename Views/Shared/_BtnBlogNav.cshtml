@@ -2,8 +2,7 @@
 @using PagedList.Mvc;*@
 @using wc_Blog.Models
 @model ICollection<BlogPost>
-@using (Html.BeginForm("_BtnBlogNav", "BlogPosts", FormMethod.Get))
-{
+
 
 	<div class="row">
 		@foreach (var post in Model)
@@ -46,5 +45,4 @@
 				</nav>
 			</div>
 		</div>*@
-}
 @*@Html.PagedListPager(Model, page => Url.Action("_BtnBlogNav", new { page }))*@
